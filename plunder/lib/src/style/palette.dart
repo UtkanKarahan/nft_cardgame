@@ -28,6 +28,6 @@ class Palette {
   Color get inkFullOpacity => const Color(0xfff28705);
   Color get ink => const Color(0xfff23030);
   Color get background => const Color(0xFF1D594E);
-  Color get backgroundPlaySession => const Color(0xff1d594e);
+  Color get sidePanel => const Color(0xff6da89d);
   Color get trueWhite => const Color(0xffffffff);
 }

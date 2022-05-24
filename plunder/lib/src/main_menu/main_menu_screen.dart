@@ -25,12 +25,12 @@ class MainMenuScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: palette.background,
       body: ResponsiveScreen(
-        mainAreaProminence: 0.45,
+        mainAreaProminence: 0.8,
         squarishMainArea: Center(
           child: Transform.rotate(
             angle: -0.1,
             child: const Text(
-              'YALVARIRIM AGZINA AL OUZ',
+              'OUZ Hani Sarki nerde',
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontFamily: 'Permanent Marker',
@@ -41,28 +41,31 @@ class MainMenuScreen extends StatelessWidget {
           ),
         ),
         rectangularMenuArea: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
 
             _gap,
-            if (gamesServicesController != null) ...[
-              _hideUntilReady(
-                ready: gamesServicesController.signedIn,
-                child: ElevatedButton(
-                  onPressed: () => gamesServicesController.showAchievements(),
-                  child: const Text('Achievements'),
-                ),
-              ),
-              _gap,
-              _hideUntilReady(
-                ready: gamesServicesController.signedIn,
-                child: ElevatedButton(
-                  onPressed: () => gamesServicesController.showLeaderboard(),
-                  child: const Text('Leaderboard'),
-                ),
-              ),
-              _gap,
-            ],
+            ElevatedButton(
+              onPressed: () => GoRouter.of(context).go('/settings'),
+              child: const Text('GUILD'),
+            ),
+            _gap,
+            ElevatedButton(
+              onPressed: () => GoRouter.of(context).go('/settings'),
+              child: const Text('SHOP'),
+            ),
+            _gap,
+            ElevatedButton(
+              onPressed: () => GoRouter.of(context).go('/settings'),
+              child: const Text('AUCTION'),
+            ),
+
+            _gap,
+            ElevatedButton(
+              onPressed: () => GoRouter.of(context).go('/settings'),
+              child: const Text('ARENA'),
+            ),
+            _gap,
             ElevatedButton(
               onPressed: () => GoRouter.of(context).go('/settings'),
               child: const Text('Settings'),

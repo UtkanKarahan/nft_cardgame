@@ -16,8 +16,6 @@ class ResponsiveScreen extends StatelessWidget {
   /// or wide.
   final Widget rectangularMenuArea;
 
-  /// An area reserved for some static text close to the top of the screen.
-  final Widget topMessageArea;
 
   /// How much bigger should the [squarishMainArea] be compared to the other
   /// elements.
@@ -26,7 +24,6 @@ class ResponsiveScreen extends StatelessWidget {
   const ResponsiveScreen({
     required this.squarishMainArea,
     required this.rectangularMenuArea,
-    this.topMessageArea = const SizedBox.shrink(),
     this.mainAreaProminence = 0.8,
     super.key,
   });
@@ -41,16 +38,11 @@ class ResponsiveScreen extends StatelessWidget {
 
         if (size.height >= size.width) {
           // "Portrait" / "mobile" mode.
-          return Column(
+          return Row(
+            mainAxisAlignment: MainAxisAlignment.end,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              SafeArea(
-                bottom: false,
-                child: Padding(
-                  padding: padding,
-                  child: topMessageArea,
-                ),
-              ),
+
               Expanded(
                 flex: (mainAreaProminence * 100).round(),
                 child: SafeArea(
@@ -75,6 +67,7 @@ class ResponsiveScreen extends StatelessWidget {
           final isLarge = size.width > 900;
 
           return Row(
+
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Expanded(
@@ -90,15 +83,7 @@ class ResponsiveScreen extends StatelessWidget {
                 flex: 3,
                 child: Column(
                   children: [
-                    SafeArea(
-                      bottom: false,
-                      left: false,
-                      maintainBottomViewPadding: true,
-                      child: Padding(
-                        padding: padding,
-                        child: topMessageArea,
-                      ),
-                    ),
+
                     Expanded(
                       child: SafeArea(
                         top: false,
