@@ -1,0 +1,58 @@
+name: plunder
+description: An NFT based Trading Card Game.
+
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.17.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  audioplayers: ^0.20.1
+  cupertino_icons: ^1.0.2
+  go_router: ^3.0.1
+  logging: ^1.0.2
+  provider: ^6.0.2
+  shared_preferences: ^2.0.13
+
+  firebase_core: ^1.15.0  # Needed for Crashlytics below
+  firebase_crashlytics: ^2.6.3  # Error reporting
+  games_services: ^2.0.7  # Achievements and leaderboards
+  google_mobile_ads: ^1.1.0  # Ads
+  in_app_purchase: ^3.0.1  # In-app purchases
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_launcher_icons: ^0.9.2
+  flutter_lints: ^2.0.1
+  test: ^1.19.0
+
+flutter:
+
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+    - assets/music/
+    - assets/sfx/
+
+
+  # fonts:
+  #   - family: Schyler
+  #     fonts:
+  #       - asset: fonts/Schyler-Regular.ttf
+  #       - asset: fonts/Schyler-Italic.ttf
+  #         style: italic
+  #   - family: Trajan Pro
+  #     fonts:
+  #       - asset: fonts/TrajanPro.ttf
+  #       - asset: fonts/TrajanPro_Bold.ttf
+  #         weight: 700
+
