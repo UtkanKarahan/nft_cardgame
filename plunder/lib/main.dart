@@ -141,7 +141,7 @@ Widget build(BuildContext context) {
           theme: ThemeData.from(
             colorScheme: ColorScheme.fromSeed(
               seedColor: palette.darkPen,
-              background: palette.backgroundMain,
+              background: palette.background,
             ),
             textTheme: TextTheme(
               bodyText2: TextStyle(

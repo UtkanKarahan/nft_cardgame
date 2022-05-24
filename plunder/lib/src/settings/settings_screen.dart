@@ -23,7 +23,7 @@ class SettingsScreen extends StatelessWidget {
     final palette = context.watch<Palette>();
 
     return Scaffold(
-      backgroundColor: palette.backgroundSettings,
+      backgroundColor: palette.background,
       body: ResponsiveScreen(
         squarishMainArea: ListView(
           children: [
@@ -60,6 +60,8 @@ class SettingsScreen extends StatelessWidget {
 
 
             _gap,
+
+
           ],
         ),
         rectangularMenuArea: ElevatedButton(
