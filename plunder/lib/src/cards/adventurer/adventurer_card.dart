@@ -14,7 +14,7 @@ class AdventurerCard extends StatefulWidget {
 class _AdventurerCardState extends State<AdventurerCard> {
   @override
   Widget build(BuildContext context) {
-    double height = 1200;
+    double height = 1100;
     imageCache.clear();
     return Card(
       elevation: 21,
@@ -41,24 +41,24 @@ class _AdventurerCardState extends State<AdventurerCard> {
 
             children: [
               Padding(
-                padding: const EdgeInsets.only(left: 150.0),
+                padding: const EdgeInsets.only(left: 100.0),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     const Text("Win / Lose / Draw", style: TextStyle(fontSize: 40,color: Colors.black) ,),
                     Text("${widget.adventurer.win} / ${widget.adventurer.lose} / ${widget.adventurer.draw}", style: const TextStyle(fontSize: 70,color: Colors.black),),
-                    const SizedBox(height: 65),
+                    const SizedBox(height: 50),
                   ],
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 155.0),
+                padding: const EdgeInsets.only(left: 160.0),
                 child: RotatedBox(
                   quarterTurns: 1,
                   child: RichText(
                     text: TextSpan(
                       text: "${widget.adventurer.username} @ ${widget.adventurer.tag}",
-                      style: const TextStyle(fontSize: 50),
+                      style: const TextStyle(fontSize: 45),
 
                     ),
                   ),

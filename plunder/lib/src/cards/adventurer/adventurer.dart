@@ -18,4 +18,4 @@ class Adventurer {
 
 }
 
-Adventurer demoAdventurer = Adventurer(rank: "1",win: 1, lose: 134, draw: 5, crystal: 140, username: "Nostradamuus", tag: "3169", pic: "https://secure.img1-fg.wfcdn.com/im/02829071/resize-h800-w800%5Ecompr-r85/7726/77263230/Dark+Magician+Male+Yami+Yugi+Cardboard+Standup.jpg");
+Adventurer demoAdventurer = Adventurer(rank: "2",win: 1, lose: 134, draw: 5, crystal: 140, username: "Nostradamuus", tag: "3169", pic: "https://secure.img1-fg.wfcdn.com/im/02829071/resize-h800-w800%5Ecompr-r85/7726/77263230/Dark+Magician+Male+Yami+Yugi+Cardboard+Standup.jpg");
