@@ -1,14 +1,6 @@
-// Copyright 2022, the Flutter project authors. Please see the AUTHORS file
-// for details. All rights reserved. Use of this source code is governed by a
-// BSD-style license that can be found in the LICENSE file.
-
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
-
-
-import '../games_services/games_services.dart';
-import '../settings/settings.dart';
+import '../side_nav/navigation.dart';
 import '../style/palette.dart';
 import '../style/responsive_screen.dart';
 
@@ -18,8 +10,6 @@ class MainMenuScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final palette = context.watch<Palette>();
-    final gamesServicesController = context.watch<GamesServicesController?>();
-    final settingsController = context.watch<SettingsController>();
 
 
     return Scaffold(
@@ -40,66 +30,8 @@ class MainMenuScreen extends StatelessWidget {
             ),
           ),
         ),
-        rectangularMenuArea: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-
-            _gap,
-            ElevatedButton(
-              onPressed: () => GoRouter.of(context).go('/settings'),
-              child: const Text('GUILD'),
-            ),
-            _gap,
-            ElevatedButton(
-              onPressed: () => GoRouter.of(context).go('/settings'),
-              child: const Text('SHOP'),
-            ),
-            _gap,
-            ElevatedButton(
-              onPressed: () => GoRouter.of(context).go('/settings'),
-              child: const Text('AUCTION'),
-            ),
-
-            _gap,
-            ElevatedButton(
-              onPressed: () => GoRouter.of(context).go('/settings'),
-              child: const Text('ARENA'),
-            ),
-            _gap,
-            ElevatedButton(
-              onPressed: () => GoRouter.of(context).go('/settings'),
-              child: const Text('Settings'),
-            ),
-            _gap,
-
-          ],
-        ),
+        rectangularMenuArea: SideNav(),
       ),
     );
   }
-
-  /// Prevents the game from showing game-services-related menu items
-  /// until we're sure the player is signed in.
-  ///
-  /// This normally happens immediately after game start, so players will not
-  /// see any flash. The exception is folks who decline to use Game Center
-  /// or Google Play Game Services, or who haven't yet set it up.
-  Widget _hideUntilReady({required Widget child, required Future<bool> ready}) {
-    return FutureBuilder<bool>(
-      future: ready,
-      builder: (context, snapshot) {
-        // Use Visibility here so that we have the space for the buttons
-        // ready.
-        return Visibility(
-          visible: snapshot.data ?? false,
-          maintainState: true,
-          maintainSize: true,
-          maintainAnimation: true,
-          child: child,
-        );
-      },
-    );
-  }
-
-  static const _gap = SizedBox(height: 10);
 }

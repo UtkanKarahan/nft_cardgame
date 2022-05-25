@@ -3,6 +3,8 @@
 // BSD-style license that can be found in the LICENSE file.
 
 import 'package:flutter/material.dart';
+import 'package:plunder/src/style/palette.dart';
+import 'package:provider/provider.dart';
 
 /// A widget that makes it easy to create a screen with a square-ish
 /// main area, a smaller menu area, and a small area for a message on top.
@@ -24,7 +26,7 @@ class ResponsiveScreen extends StatelessWidget {
   const ResponsiveScreen({
     required this.squarishMainArea,
     required this.rectangularMenuArea,
-    this.mainAreaProminence = 0.8,
+    this.mainAreaProminence = 0.9,
     super.key,
   });
 
@@ -35,6 +37,7 @@ class ResponsiveScreen extends StatelessWidget {
         // This widget wants to fill the whole screen.
         final size = constraints.biggest;
         final padding = EdgeInsets.all(size.shortestSide / 30);
+        final palette = context.watch<Palette>();
 
         if (size.height >= size.width) {
           // "Portrait" / "mobile" mode.
@@ -52,11 +55,11 @@ class ResponsiveScreen extends StatelessWidget {
                   child: squarishMainArea,
                 ),
               ),
-              SafeArea(
-                top: false,
-                maintainBottomViewPadding: true,
-                child: Padding(
-                  padding: padding,
+              Container(
+                color: palette.sidePanel,
+                child: SafeArea(
+                  top: false,
+                  maintainBottomViewPadding: true,
                   child: rectangularMenuArea,
                 ),
               ),
@@ -79,24 +82,17 @@ class ResponsiveScreen extends StatelessWidget {
                   child: squarishMainArea,
                 ),
               ),
-              Expanded(
-                flex: 3,
+              Container(
+                color: palette.sidePanel,
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
 
-                    Expanded(
-                      child: SafeArea(
-                        top: false,
-                        left: false,
-                        maintainBottomViewPadding: true,
-                        child: Align(
-                          alignment: Alignment.bottomCenter,
-                          child: Padding(
-                            padding: padding,
-                            child: rectangularMenuArea,
-                          ),
-                        ),
-                      ),
+                    SafeArea(
+                      top: false,
+                      left: false,
+                      maintainBottomViewPadding: true,
+                      child: rectangularMenuArea,
                     )
                   ],
                 ),

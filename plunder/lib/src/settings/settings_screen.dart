@@ -4,6 +4,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:plunder/src/side_nav/navigation.dart';
 import 'package:provider/provider.dart';
 
 
@@ -64,12 +65,7 @@ class SettingsScreen extends StatelessWidget {
 
           ],
         ),
-        rectangularMenuArea: ElevatedButton(
-          onPressed: () {
-            GoRouter.of(context).pop();
-          },
-          child: const Text('Back'),
-        ),
+        rectangularMenuArea: SideNav(),
       ),
     );
   }
