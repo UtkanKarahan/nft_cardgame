@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:plunder/src/cards/adventurer/adventurer.dart';
+import 'package:plunder/src/cards/adventurer/adventurer_card.dart';
 import 'package:provider/provider.dart';
 import '../side_nav/navigation.dart';
 import '../style/palette.dart';
@@ -16,19 +18,21 @@ class MainMenuScreen extends StatelessWidget {
       backgroundColor: palette.background,
       body: ResponsiveScreen(
         mainAreaProminence: 0.8,
-        squarishMainArea: Center(
-          child: Transform.rotate(
-            angle: -0.1,
-            child: const Text(
-              'OUZ Hani Sarki nerde',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontFamily: 'Permanent Marker',
-                fontSize: 55,
-                height: 1,
+        squarishMainArea: Wrap(
+          children:  [
+            AdventurerCard(adventurer: demoAdventurer,),
+            Container(
+
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: Image.asset("assets/cards/adventurer_rank1.png").image,
+                  fit: BoxFit.scaleDown,
+                ),
               ),
+              child:Column(),
             ),
-          ),
+          ],
+
         ),
         rectangularMenuArea: SideNav(),
       ),

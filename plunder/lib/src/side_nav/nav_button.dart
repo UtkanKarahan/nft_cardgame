@@ -22,30 +22,24 @@ class _NavButtonState extends State<NavButton> {
     final palette = context.watch<Palette>();
 
     return Container(
-      height: 92,
-      width: 92,
+      height: 60,
+      width: 60,
       color: selection[widget.ind] ? palette.background : Colors.transparent,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
 
-          Center(
-            child: Padding(
-              padding: const EdgeInsets.all(23.0),
-              child: IconButton(
-                icon: widget.pic,
-                color: palette.ink,
-                onPressed: ()
-                {
+          Padding(
+            padding: const EdgeInsets.all(7.0),
+            child: IconButton(
+              icon: widget.pic,
+              color: palette.ink,
+              onPressed: ()
+              {
+                GoRouter.of(context).go(widget.route);
 
-
-                  GoRouter.of(context).go(widget.route);
-
-
-
-                  },
-              ),
+                },
             ),
           ),
 

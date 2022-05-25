@@ -42,7 +42,7 @@ flutter:
     - assets/images/
     - assets/music/
     - assets/sfx/
-
+    - assets/cards/
 
   # fonts:
   #   - family: Schyler

@@ -42,7 +42,7 @@ class ResponsiveScreen extends StatelessWidget {
         if (size.height >= size.width) {
           // "Portrait" / "mobile" mode.
           return Row(
-            mainAxisAlignment: MainAxisAlignment.end,
+
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
 
@@ -56,6 +56,7 @@ class ResponsiveScreen extends StatelessWidget {
                 ),
               ),
               Container(
+                width: 60,
                 color: palette.sidePanel,
                 child: SafeArea(
                   top: false,
@@ -83,9 +84,10 @@ class ResponsiveScreen extends StatelessWidget {
                 ),
               ),
               Container(
+                width: 60,
                 color: palette.sidePanel,
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
+
                   children: [
 
                     SafeArea(

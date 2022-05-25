@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:plunder/src/side_nav/nav_button.dart';
+import 'package:plunder/src/style/palette.dart';
+import 'package:provider/provider.dart';
+
 
 
 
@@ -14,6 +17,7 @@ class SideNav extends StatefulWidget {
 class _SideNavState extends State<SideNav> {
   @override
   Widget build(BuildContext context) {
+    final palette = context.watch<Palette>();
 
 
     return  Column(
@@ -25,6 +29,7 @@ class _SideNavState extends State<SideNav> {
         NavButton(pic: const Icon(Icons.sell, size: 46,), route: "/", ind: 2),
         NavButton(pic: const Icon(Icons.signal_wifi_off_rounded, size: 46,), route: "/", ind :3),
         NavButton(pic: const Icon(Icons.settings, size: 46,), route: "/settings", ind: 4),
+
 
 
 
