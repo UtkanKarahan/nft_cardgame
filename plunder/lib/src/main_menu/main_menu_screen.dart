@@ -21,16 +21,7 @@ class MainMenuScreen extends StatelessWidget {
         squarishMainArea: Wrap(
           children:  [
             AdventurerCard(adventurer: demoAdventurer,),
-            Container(
 
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: Image.asset("assets/cards/adventurer_rank1.png").image,
-                  fit: BoxFit.scaleDown,
-                ),
-              ),
-              child:Column(),
-            ),
           ],
 
         ),
