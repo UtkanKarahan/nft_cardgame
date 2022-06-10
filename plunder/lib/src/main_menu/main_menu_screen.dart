@@ -57,7 +57,7 @@ class MainMenuScreen extends StatelessWidget {
 
           ),
         ),
-        rectangularMenuArea: SideNav(),
+        rectangularMenuArea: const SideNav(),
       ),
     );
   }
