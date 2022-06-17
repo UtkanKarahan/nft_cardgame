@@ -27,7 +27,7 @@ class _SideNavState extends State<SideNav> {
         NavButton(pic: const Icon(Icons.add, size: 46,), route: "/", ind: 0),
         NavButton(pic: const Icon(Icons.shopping_cart, size: 46,), route: "/",ind: 1 ),
         NavButton(pic: const Icon(Icons.sell, size: 46,), route: "/", ind: 2),
-        NavButton(pic: const Icon(Icons.signal_wifi_off_rounded, size: 46,), route: "/", ind :3),
+        NavButton(pic: const Icon(Icons.signal_wifi_off_rounded, size: 46,), route: "auction", ind :3),
         NavButton(pic: const Icon(Icons.settings, size: 46,), route: "/settings", ind: 4),
 
 

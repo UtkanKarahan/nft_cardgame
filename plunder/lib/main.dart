@@ -100,6 +100,11 @@ class MyApp extends StatelessWidget {
               builder: (context, state) =>
               const SettingsScreen(key: Key('settings')),
             ),
+            GoRoute(
+              path: 'auction',
+              builder: (context, state) =>
+              const SettingsScreen(key: Key('auction')),
+            ),
           ]),
     ],
   );
