@@ -8,6 +8,7 @@ class AdventurerCard extends StatefulWidget {
   const AdventurerCard({Key? key, required this.adventurer}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _AdventurerCardState createState() => _AdventurerCardState();
 }
 
@@ -57,7 +58,7 @@ class _AdventurerCardState extends State<AdventurerCard> {
                   quarterTurns: 1,
                   child: RichText(
                     text: TextSpan(
-                      text: "${widget.adventurer.username} @ ${widget.adventurer.tag}",
+                      text: widget.adventurer.username,
                       style: const TextStyle(fontSize: 45),
 
                     ),
