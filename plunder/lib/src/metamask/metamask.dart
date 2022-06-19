@@ -6,7 +6,7 @@ import 'package:flutter_web3/flutter_web3.dart';
 
 class MetaMaskProvider extends ChangeNotifier {
 
-  static const operatingChain = 1;
+  static const operatingChain = 4;
   String currentAddress = "";
 
   int currentChain = -1;
