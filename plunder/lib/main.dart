@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -5,9 +7,14 @@ import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:logging/logging.dart';
 import 'package:plunder/src/app_lifecycle/app_lifecycle.dart';
+import 'package:plunder/src/auction/auction_screen.dart';
+import 'package:plunder/src/contract_functions/contract_functions.dart';
 import 'package:plunder/src/crashlytics/crashlytics.dart';
+import 'package:plunder/src/firestore/firestore.dart';
+import 'package:plunder/src/inventory/inventory_screen.dart';
 import 'package:plunder/src/login/login_screen.dart';
 import 'package:plunder/src/metamask/metamask.dart';
+import 'package:plunder/src/shop/shop_screen.dart';
 import 'package:provider/provider.dart';
 import 'src/games_services/games_services.dart';
 import 'src/main_menu/main_menu_screen.dart';
@@ -18,9 +25,13 @@ import 'src/settings/settings_screen.dart';
 import 'src/style/palette.dart';
 import 'src/style/snack_bar.dart';
 
-Future<void> main() async {
+
+
+
+void main() async {
   // Uncomment the following lines to enable Firebase Crashlytics.
   // See lib/src/crashlytics/README.md for details.
+
 
   FirebaseCrashlytics? crashlytics;
   // if (!kIsWeb && (Platform.isIOS || Platform.isAndroid)) {
@@ -39,10 +50,11 @@ Future<void> main() async {
     guardedMain,
     crashlytics: crashlytics,
   );
+
 }
 
 /// Without logging and crash reporting, this would be `void main()`.
-void guardedMain() {
+Future<void> guardedMain() async {
   if (kReleaseMode) {
     // Don't log anything below warnings in production.
     Logger.root.level = Level.WARNING;
@@ -52,8 +64,6 @@ void guardedMain() {
         '${record.loggerName}: '
         '${record.message}');
   });
-
-  WidgetsFlutterBinding.ensureInitialized();
 
   _log.info('Going full screen');
   SystemChrome.setEnabledSystemUIMode(
@@ -67,45 +77,63 @@ void guardedMain() {
   //     ..initialize();
   // }
 
+  WidgetsFlutterBinding.ensureInitialized();
+
+  //await Firebase.initializeApp();
+
   runApp(
     MyApp(
       settingsPersistence: LocalStorageSettingsPersistence(),
       gamesServicesController: gamesServicesController,
     ),
   );
+
+
+
+
+
 }
 
 Logger _log = Logger('main.dart');
 
 class MyApp extends StatelessWidget {
-  static final _router = GoRouter(
-    routes: [
-      GoRoute(
-          path: '/',
-          builder: (context, state) =>
-              const LoginScreen(key: Key('login')),
-          )
-    ],
-  );
 
   static final _routerGame = GoRouter(
     routes: [
       GoRoute(
-          path: '/',
+        path: '/',
+        builder: (context, state) =>
+        const LoginScreen(key: Key('login')),
+      ),
+
+      GoRoute(
+          path: '/guild',
           builder: (context, state) =>
           const MainMenuScreen(key: Key('main menu')),
-          routes: [
-            GoRoute(
-              path: 'settings',
-              builder: (context, state) =>
-              const SettingsScreen(key: Key('settings')),
-            ),
-            GoRoute(
-              path: 'auction',
-              builder: (context, state) =>
-              const SettingsScreen(key: Key('auction')),
-            ),
-          ]),
+      ),
+      GoRoute(
+        path: '/shop',
+        builder: (context, state) =>
+        const ShopScreen(key: Key('shop')),
+      ),
+      GoRoute(
+        path: '/inventory',
+        builder: (context, state) =>
+        const InventoryScreen(key: Key('inventory')),
+      ),
+      GoRoute(
+        path: '/auction',
+        builder: (context, state) =>
+        const AuctionScreen(key: Key('auction')),
+      ),
+        GoRoute(
+          path: '/settings',
+          builder: (context, state) =>
+          const SettingsScreen(key: Key('settings')),
+        ),
+
+
+
     ],
   );
 
@@ -121,6 +149,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+
     return ChangeNotifierProvider(
         create: (context) => MetaMaskProvider()..init(),
         builder: (context, child) {
@@ -134,6 +164,9 @@ class MyApp extends StatelessWidget {
                   create: (context) => SettingsController(
                     persistence: settingsPersistence,
                   )..loadStateFromPersistence(),
+                ),
+                Provider<FirestoreService>(
+                  create: (_) => FirestoreService(FirebaseFirestore.instance),
                 ),
                 Provider(
                   create: (context) => Palette(),
@@ -166,8 +199,8 @@ class MyApp extends StatelessWidget {
                           ),
                         ),
                       ),
-                      routeInformationParser: _router.routeInformationParser,
-                      routerDelegate: _router.routerDelegate,
+                      routeInformationParser: _routerGame.routeInformationParser,
+                      routerDelegate: _routerGame.routerDelegate,
                       scaffoldMessengerKey: scaffoldMessengerKey,
                     );
                   } else {

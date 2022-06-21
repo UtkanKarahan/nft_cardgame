@@ -1,0 +1,118 @@
+[
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "packURI",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "tokenURI_1",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "tokenURI_2",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "tokenURI_3",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "tokenURI_4",
+        "type": "string"
+      }
+    ],
+    "name": "buyPack",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+      }
+    ],
+    "name": "buyToken",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "packId",
+        "type": "uint256"
+      }
+    ],
+    "name": "openPack",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_card",
+        "type": "address"
+      }
+    ],
+    "name": "setCardAddr",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_currency",
+        "type": "address"
+      }
+    ],
+    "name": "setCurrencyAddr",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_pack",
+        "type": "address"
+      }
+    ],
+    "name": "setPackAddr",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_to",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_tokenId",
+        "type": "uint256"
+      }
+    ],
+    "name": "transferCard",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  }
+]

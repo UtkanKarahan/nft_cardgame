@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:plunder/src/side_nav/nav_button.dart';
+import 'package:plunder/src/style/icons.dart';
 import 'package:plunder/src/style/palette.dart';
 import 'package:provider/provider.dart';
 
@@ -17,18 +18,17 @@ class SideNav extends StatefulWidget {
 class _SideNavState extends State<SideNav> {
   @override
   Widget build(BuildContext context) {
-    final palette = context.watch<Palette>();
 
 
     return  Column(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
 
-        NavButton(pic: const Icon(Icons.add, size: 46,), route: "/", ind: 0),
-        NavButton(pic: const Icon(Icons.shopping_cart, size: 46,), route: "/",ind: 1 ),
-        NavButton(pic: const Icon(Icons.sell, size: 46,), route: "/", ind: 2),
-        NavButton(pic: const Icon(Icons.signal_wifi_off_rounded, size: 46,), route: "auction", ind :3),
-        NavButton(pic: const Icon(Icons.settings, size: 46,), route: "/settings", ind: 4),
+        NavButton(pic: const Icon(MyFlutterApp.guild, size: 30,), route: "/guild"  ),
+        NavButton(pic: const Icon(MyFlutterApp.shop, size: 30,), route: "/shop"),
+        NavButton(pic: const Icon(Icons.all_inbox, size: 30,), route: "/inventory"),
+        NavButton(pic: const Icon(MyFlutterApp.auction, size: 30,), route: "/auction"),
+        NavButton(pic: const Icon(Icons.settings, size: 30,), route: "/settings"),
 
 
 
